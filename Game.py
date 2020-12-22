@@ -3,7 +3,7 @@ from backend import Images
 import glob
 import itertools
 
-Assets_dir = "All_Assets/"
+Assets_dir = "All_Assets\\"
 
 base_list = glob.glob(Assets_dir+'*base*')
 access_list = glob.glob(Assets_dir+'*access*')
@@ -19,7 +19,7 @@ class Window(Frame):
     def __init__(self, master=None):
         Frame.__init__(self, master)
         self.master = master
-        self.base = PhotoImage(file = 'Bases/avatar_app_base_01.png')
+        self.base = PhotoImage(file = 'All_Assets\\avatar_app_base_03.png')
         self.base_label = Label(master, image = self.base)
         self.base_label.grid(row = 0, column = 0, columnspan = 8, rowspan = 16, sticky = NE)
         
@@ -37,7 +37,8 @@ class Window(Frame):
 
     def base_change(self, base=base_list):
         self.next_base = itertools.cycle(base_list)
-        self.new_base = next(self.next_base)
+        self.new_base = PhotoImage(file = next(self.next_base))
+
         self.base_label.configure(image = self.new_base)
         
 
